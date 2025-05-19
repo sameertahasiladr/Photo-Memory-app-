@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo Memory App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <script
+    src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"
+    onload="console.log('PouchDB CDN loaded:', window.PouchDB)"
+    onerror="console.error('Failed to load PouchDB CDN'); loadLocalPouchDB()"
+  ></script>
+  <script>
+    function loadLocalPouchDB() {
+      var script = document.createElement('script');
+      script.src = '/pouchdb.min.js';
+      script.onload = function() { console.log('PouchDB local loaded:', window.PouchDB); };
+      script.onerror = function() { console.error('Failed to load PouchDB local'); };
+      document.head.appendChild(script);
+    }
+    if (!window.PouchDB) {
+      console.log('PouchDB not available, trying local fallback');
+      loadLocalPouchDB();
+    }
+  </script>
+  <script type="module" src="/src/main.tsx"></script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
